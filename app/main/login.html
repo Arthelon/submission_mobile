@@ -1,12 +1,17 @@
 <form [ngFormModel]="loginForm">
 	<ion-list>
-		<ion-item>
+		<ion-item [class.error]='!username.valid && username.touched'>
 			<ion-label floating>Login</ion-label>
 			<ion-input type='text' value='' [ngFormControl]='username'></ion-input>
 		</ion-item>
-		<ion-item>
+		<div *ngIf="username.hasError('required') && username.touched" 
+			class='error-box'>Username is required</div>
+		<ion-item [class.error]='!password.valid && password.touched'>
 			<ion-label floating>Password</ion-label>
 			<ion-input type='password' value='' [ngFormControl]='password'></ion-input>
 		</ion-item>
+		<div *ngIf="password.hasError('required') && password.touched" 
+			class='error-box'>Password is required</div>
 	</ion-list>
+	<button type='submit' [disabled]='!loginForm.valid' block>Submit</button>
 </form>
