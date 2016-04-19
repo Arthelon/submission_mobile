@@ -6,22 +6,11 @@
 // These are the imports which make up the design of this app.
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
-
-// @import "../pages/page1/page1";
-// @import "../pages/page2/page2";
-// @import "../pages/page3/page3";
-
-.custom-button {
-	margin-left: auto !important;
-	margin: 0.4rem 0.2rem 0.4rem 0.8rem;  
-}
-
 .error-box {
 	margin-top: 10px;
 	padding: 15px;
 	font-size: 11px;
 	color: white;
-	font-style: italic;
 	border-radius: 3px;
 	background: #FFC58C;
 }

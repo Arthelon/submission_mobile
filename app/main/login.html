@@ -1,4 +1,4 @@
-<form [ngFormModel]="loginForm">
+<form [ngFormModel]="loginForm" (ngSubmit)='onSubmit(loginForm.value)'>
 	<ion-list>
 		<ion-item [class.error]='!username.valid && username.touched'>
 			<ion-label floating>Login</ion-label>
