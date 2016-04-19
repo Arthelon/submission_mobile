@@ -1,0 +1,12 @@
+
+<ion-content padding>
+	<ion-segment [(ngModel)]='whichPage'>
+		<ion-segment-button value="login">Login</ion-segment-button>
+		<ion-segment-button value="register">Register</ion-segment-button>
+	</ion-segment>
+
+	<div [ngSwitch]='whichPage'>
+		<login-comp *ngSwitchWhen="'login'"></login-comp>
+		<register-comp *ngSwitchWhen="'register'"></register-comp>
+	</div>
+</ion-content>
