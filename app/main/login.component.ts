@@ -31,7 +31,6 @@ export class LoginComponent {
 	onSubmit(val) {
 		this.auth.login(val).then(() => {
 			let nav = this.app.getComponent('rootNav')
-			console.log(nav)
 			nav.setRoot(TabsPage)
 		}, err => {
 			this.error = err

@@ -7,9 +7,10 @@ import {AnalyticsPage} from '../analytics/analytics.component.ts'
   templateUrl: 'build/pages/tabs/tabs.html'
 })
 export class TabsPage {
+	AccountPage = AccountPage
+	DashboardPage = DashboardPage
+	AnalyticsPage = AnalyticsPage
+	
 	constructor(private app: IonicApp) {
-		this.AccountPage = AccountPage
-		this.DashboardPage = DashboardPage
-		this.AnalyticsPage = AnalyticsPage
 	}
 }
