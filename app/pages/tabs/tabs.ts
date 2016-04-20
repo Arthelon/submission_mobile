@@ -1,10 +1,15 @@
-import {Page} from 'ionic-angular';
-
+import {Page, IonicApp} from 'ionic-angular';
+import {AccountPage} from '../account/account.component.ts'
+import {DashboardPage} from '../dashboard/dashboard.component.ts'
+import {AnalyticsPage} from '../analytics/analytics.component.ts'
 
 @Page({
   templateUrl: 'build/pages/tabs/tabs.html'
 })
 export class TabsPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
+	constructor(private app: IonicApp) {
+		this.AccountPage = AccountPage
+		this.DashboardPage = DashboardPage
+		this.AnalyticsPage = AnalyticsPage
+	}
 }
