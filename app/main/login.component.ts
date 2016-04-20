@@ -2,18 +2,21 @@ import {Component, provide, OpaqueToken} from 'angular2/core'
 import {FORM_DIRECTIVES, Validators, AbstractControl, ControlGroup, FormBuilder, Control} from 'angular2/common'
 import {NavController, IONIC_DIRECTIVES} from 'ionic-angular'
 import {Http} from 'angular2/http'
+import {CONFIG} from '../config.ts'
+import {LoginService} from './login.service.ts'
 
 @Component({
 	templateUrl: 'build/main/login.html',
 	directives: [IONIC_DIRECTIVES],
-	selector: 'login-comp'
+	selector: 'login-comp',
+	providers: [LoginService]
 })
 export class LoginComponent {
 	loginForm: ControlGroup
 	username: AbstractControl
 	password: AbstractControl
 
-	constructor(private fb: FormBuilder, private http: Http) {
+	constructor(private fb: FormBuilder, private http: Http, private ls: LoginService) {
 		this.loginForm = fb.group({
 			'username': ['', Validators.required],
 			'password': ['', Validators.required]
@@ -23,7 +26,6 @@ export class LoginComponent {
 	}
 
 	onSubmit(val) {
-		console.log(val)
-		// this.http.post(this.CONFIG.SERVER_URL, val)
+		this.ls.doLogin(val)
 	}
 }
