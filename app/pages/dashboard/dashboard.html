@@ -1,0 +1,20 @@
+
+<ion-navbar *navbar>
+	<ion-title>Dashboard</ion-title>
+	<ion-buttons end>
+		<button (click)='createRoom()'><ion-icon name='add-circle-outline'></ion-icon></button>
+	</ion-buttons>
+</ion-navbar>
+<ion-content padding>
+	<ion-list-header>Room Names</ion-list-header>
+	<ion-list inset>
+		<ion-item-sliding *ngFor='#room of rooms; #index = index'>
+			<a ion-item (click)='openRoom(room)'>
+				<h2>{{room.name}}</h2>
+			</a>
+			<ion-item-options>
+				<button danger (click)='onRoomDelete(index)'><ion-icon name='trash'></ion-icon>Delete</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-navbar *navbar>
+	<ion-title>Create Room</ion-title>
+	<ion-buttons start>
+		<button (click)="close()">
+	      <span primary>Cancel</span>
+	    </button>
+	</ion-buttons>
+</ion-navbar>
+<ion-content padding>
+	<ion-list [ngFormModal]='roomForm'>
+		<ion-item>
+			<ion-input type='text' value="" placeholder='Room Name' [ngFormControl]='name'></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-input type='text' value="" placeholder='Room Path' [ngFormControl]='path'></ion-input>
+		</ion-item>
+		<ion-item>
+		  <ion-textarea value="" placeholder='Optional Description' [ngFormControl]='desc'></ion-textarea>
+		</ion-item>
+	</ion-list>
+	<button secondary [disabled]='!roomForm.valid' (click)='onSubmit()'>Create</button>
+</ion-content>

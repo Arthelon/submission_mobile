@@ -1,0 +1,58 @@
+<form [ngFormModel]="registerForm" (ngSubmit)='onSubmit(registerForm.value)'>
+	<ion-list>
+		<ion-item [class.error]='!first_name.valid && first_name.touched'>
+			<ion-label fixed>First Name</ion-label>
+			<ion-input type='text' value='' [ngFormControl]='first_name'></ion-input>
+		</ion-item>
+		<div *ngIf="first_name.hasError('required') && first_name.touched" 
+			class='error-box'>Please enter your first name
+		</div>
+		<ion-item [class.error]='!last_name.valid && last_name.touched'>
+			<ion-label fixed>Last Name</ion-label>
+			<ion-input type='text' value='' [ngFormControl]='last_name'></ion-input>
+		</ion-item>
+		<div *ngIf="last_name.hasError('required') && last_name.touched" 
+			class='error-box'>Please enter your last name
+		</div>
+		<ion-item [class.error]='!email.valid && email.touched'>
+			<ion-label fixed>Email</ion-label>
+			<ion-input type='email' value='' [ngFormControl]='email'></ion-input>
+		</ion-item>
+		<div *ngIf="email.hasError('required') && email.touched" 
+			class='error-box'>Please enter your email
+		</div>
+		<div *ngIf="!email.hasError('required') && email.hasError('invalidEmailAddress') && email.touched" 
+			class='error-box'>Invalid email address
+		</div>
+		<ion-item [class.error]='!username.valid && username.touched'>
+			<ion-label fixed>Username</ion-label>
+			<ion-input type='text' value='' [ngFormControl]='username'></ion-input>
+		</ion-item>
+		<div *ngIf="username.hasError('required') && username.touched" 
+			class='error-box'>Username is required
+		</div>
+		<ion-item [class.error]='!password.valid && password.touched'>
+			<ion-label fixed>Password</ion-label>
+			<ion-input type='password' value='' [ngFormControl]='password'></ion-input>
+		</ion-item>
+		<div *ngIf="password.hasError('required') && password.touched" 
+			class='error-box'>Password is required
+		</div>
+		<div *ngIf="password.hasError('minlength') && password.touched" 
+			class='error-box'>Password has to be at least 8 characters
+		</div>
+		<ion-item [class.error]='!password2.valid && password2.touched'>
+			<ion-label fixed>Confirm Password</ion-label>
+			<ion-input type='password' value='' [ngFormControl]='password2'></ion-input>
+		</ion-item>
+		<div *ngIf="password2.hasError('required') && password2.touched" 
+			class='error-box'>Confirmation password is required
+		</div>
+		<div *ngIf="password2.hasError('notEquivalent') && password2.touched" 
+			class='error-box'>Passwords do not match
+		</div>
+	</ion-list>
+	<button type='submit' [disabled]='!registerForm.valid' block>Register</button>
+	<p *ngIf='error' class='error-msg' text-center>{{error}}</p>
+	<p *ngIf='success' class='success-msg' text-center>{{success}}</p>
+</form>
