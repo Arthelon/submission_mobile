@@ -11,12 +11,14 @@
 		<ion-item>
 			<ion-input type='text' value="" placeholder='Room Name' [ngFormControl]='name'></ion-input>
 		</ion-item>
+		<div *ngIf='name.hasError("required") && name.touched' class='error-box'>Field cannot be left blank</div>
 		<ion-item>
 			<ion-input type='text' value="" placeholder='Room Path' [ngFormControl]='path'></ion-input>
 		</ion-item>
+		<div *ngIf='path.hasError("required") && name.touched' class='error-box'>Field cannot be left blank</div>
 		<ion-item>
 		  <ion-textarea value="" placeholder='Optional Description' [ngFormControl]='desc'></ion-textarea>
 		</ion-item>
 	</ion-list>
-	<button secondary [disabled]='!roomForm.valid' (click)='onSubmit()'>Create</button>
+	<button secondary [disabled]='!roomForm.valid' (click)='submitData(roomForm.value)'>Create</button>
 </ion-content>

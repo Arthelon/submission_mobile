@@ -40,6 +40,7 @@ export class DashboardPage {
 		})
 		this.nav.present(loading)
 	}
+	// ngAfter
 	onRoomDelete(index: number) {
 		let confirmDelete = Alert.create({
 			title: 'Are you sure you want to delete this room?',
