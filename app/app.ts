@@ -1,5 +1,5 @@
 import 'es6-shim';
-import {App, Platform} from 'ionic-angular';
+import {App, Platform, MenuController} from 'ionic-angular';
 import {OpaqueToken, provide} from 'angular2/core'
 import {StatusBar} from 'ionic-native';
 import {MainPage} from './main/main.component.ts';
@@ -9,25 +9,27 @@ import {Http} from 'angular2/http'
 
 
 @App({
-  template: '<ion-nav id="rootNav" class="ios" [root]="rootPage"></ion-nav>',
+  templateUrl: 'build/app.html',
   config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
   providers: [
     provide(AuthHttp, {
       useFactory: (http) => {
-        return new AuthHttp(new AuthConfig, http);
+        return new AuthHttp(new AuthConfig({
+          globalHeaders: [{ 'Content-Type': 'application/json' }]
+        }), http);
       },
       deps: [Http]
     })
   ]
 })
+
 export class MyApp {
   // rootPage: any = MainPage;
   rootPage: any = TabsPage
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, private menu: MenuController) {
+    this.menu.enable(true)
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       // StatusBar.styleDefault();
     });
   }
